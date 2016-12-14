@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import kr.or.dgit.bigdata.coffee.CoffeeConfig;
+import kr.or.dgit.bigdata.coffee.dto.PdtCode;
+import kr.or.dgit.bigdata.coffee.dto.PdtSale;
+import kr.or.dgit.bigdata.coffee.dto.ViewTable;
 import kr.or.dgit.bigdata.coffee.jdbc.CoffeeDbc;
 import kr.or.dgit.bigdata.coffee.jdbc.CoffeeJdbcUtil;
 
@@ -82,6 +85,60 @@ public class CafeteriaDao implements CoffeeInterDao<CafeteriaDao>{
 		}finally {
 			CoffeeJdbcUtil.close(pstmt);
 		}
+	}
+	
+	public int insertTable(PdtCode c) {
+		String sql = "insert into pdtcode values(?,?)";
+		Connection con = CoffeeDbc.getConnection();
+		int res = -1;
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, c.getCfCode());
+			pstmt.setString(2, c.getCfName());
+			System.out.println(pstmt);
+
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getErrorCode());
+			if (e.getErrorCode() == 1062) {
+				System.out.println("중복입니다.");
+			}
+			e.printStackTrace();
+
+		} finally {
+			CoffeeJdbcUtil.close(pstmt);
+		}
+
+		return res;
+	}
+	
+	public int insertTable(PdtSale s) {
+		String sql = "insert into pdtsale values(?,?,?,?)";
+		Connection con = CoffeeDbc.getConnection();
+		int res = -1;
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, s.getCfCode());
+			pstmt.setInt(2, s.getCfOne());
+			pstmt.setInt(3, s.getCfSell());
+			pstmt.setInt(4, s.getCfMargin());
+			System.out.println(pstmt);
+
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getErrorCode());
+			if (e.getErrorCode() == 1062) {
+				System.out.println("중복입니다.");
+			}
+			e.printStackTrace();
+
+		} finally {
+			CoffeeJdbcUtil.close(pstmt);
+		}
+
+		return res;
 	}
 	
 }
