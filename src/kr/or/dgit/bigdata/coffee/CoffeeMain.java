@@ -172,7 +172,13 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		cl2.setVisible(false);
 		cp.setVisible(true);
 		
-		
+		if (cp.isVisible()) {
+			PdtCode c = getPdtCodeObject();
+			PdtSale s = getPdtSaleObject();
+			// Dao에 insert아이템 추가할것
+			
+			
+		}		
 	}
 	protected void actionPerformedBtnList1(ActionEvent e) {
 		
