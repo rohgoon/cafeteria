@@ -78,15 +78,15 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		fl_subPanel.setHgap(30);
 		contentPane.add(subPanel, BorderLayout.SOUTH);
 		
-		btnOk = new JButton("?낅젰");
+		btnOk = new JButton("입력");
 		btnOk.addActionListener(this);
 		subPanel.add(btnOk);
 		
-		btnList1 = new JButton("異쒕젰1");
+		btnList1 = new JButton("추가1");
 		btnList1.addActionListener(this);
 		subPanel.add(btnList1);
 		
-		btnList2 = new JButton("異쒕젰2");
+		btnList2 = new JButton("추가2");
 		btnList2.addActionListener(this);
 		subPanel.add(btnList2);
 		
