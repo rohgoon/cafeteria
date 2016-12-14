@@ -78,15 +78,15 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		fl_subPanel.setHgap(30);
 		contentPane.add(subPanel, BorderLayout.SOUTH);
 		
-		btnOk = new JButton("입력");
+		btnOk = new JButton("?낅젰");
 		btnOk.addActionListener(this);
 		subPanel.add(btnOk);
 		
-		btnList1 = new JButton("출력1");
+		btnList1 = new JButton("異쒕젰1");
 		btnList1.addActionListener(this);
 		subPanel.add(btnList1);
 		
-		btnList2 = new JButton("출력2");
+		btnList2 = new JButton("異쒕젰2");
 		btnList2.addActionListener(this);
 		subPanel.add(btnList2);
 		
@@ -95,7 +95,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	}
 
 	
-	// 액션리스너
+	// ?≪뀡由ъ뒪??
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnList1) {
 			actionPerformedBtnList1(arg0);
@@ -108,7 +108,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnNewButton(ActionEvent e) {
-		// 이벤트에 따라 if문 추가	
+		// ?대깽?몄뿉 ?곕씪 if臾?異붽?	
 		cl1.setVisible(false);
 		cl2.setVisible(false);
 		cp.setVisible(true);

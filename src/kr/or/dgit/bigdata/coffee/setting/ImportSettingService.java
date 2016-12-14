@@ -41,8 +41,9 @@ public class ImportSettingService extends ServiceSetting {
 	}
 
 	private Object getFilePath(String t, boolean b) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder sb = new StringBuilder();
+		sb.append(b ? CoffeeConfig.IMPORT_DIR : CoffeeConfig.MYSQL_EXPORT_PATH).append(t).append(".txt");
+		return sb.toString().replace("\\", "/");
 	}
 
 }

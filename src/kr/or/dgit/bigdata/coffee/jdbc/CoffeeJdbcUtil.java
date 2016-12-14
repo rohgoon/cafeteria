@@ -6,17 +6,16 @@ import java.sql.Statement;
 
 public class CoffeeJdbcUtil {
 	public static void close(Statement stmt){
-		if (stmt != null) {
+		if (stmt !=null) {
 			try {
 				stmt.close();
 				stmt = null;
-				
 			} catch (SQLException e) {
-				
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-		}
+		}		
+		
 	}
 	
 	public static void close(ResultSet rs){
@@ -25,7 +24,7 @@ public class CoffeeJdbcUtil {
 				rs.close();
 				rs = null;
 			} catch (SQLException e) {
-				
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

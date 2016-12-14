@@ -49,7 +49,7 @@ public class UserDao implements CoffeeInterDao<UserDao> {
 	}
 
 	
-	// 사용안함
+	// ?ъ슜?덊븿
 	@Override
 	public void dropItem() {
 		// TODO Auto-generated method stub

@@ -7,25 +7,28 @@ import java.sql.SQLException;
 import kr.or.dgit.bigdata.coffee.CoffeeConfig;
 
 public class CoffeeDbc {
-	private static CoffeeDbc instance =new CoffeeDbc();
+	private static CoffeeDbc instance = new CoffeeDbc();
 	private static Connection con;
 	
 	public CoffeeDbc() {
 		try {
-			con = DriverManager.getConnection(CoffeeConfig.URL, CoffeeConfig.USER, CoffeeConfig.PWD);
-			
-		
+			Class.forName(CoffeeConfig.DRIVER);
+			con = DriverManager.getConnection(CoffeeConfig.URL, CoffeeConfig.USER,CoffeeConfig.PWD);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (SQLException e) {
-			
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		
 	}
+	
 	public static Connection getConnection(){
-		if(instance == null){
+		if (instance == null) {
 			new CoffeeDbc();
 		}
-		
 		return CoffeeDbc.con;
 	}
 	public static void closeConnection(){
@@ -34,12 +37,10 @@ public class CoffeeDbc {
 				con.close();
 				con = null;
 			} catch (SQLException e) {
-				
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 		}
-		
 	}
-	
 }
