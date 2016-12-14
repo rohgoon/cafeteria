@@ -1,6 +1,6 @@
 package kr.or.dgit.bigdata.coffee.dto;
 
-public class CoffeeList1 {
+public class CoffeeList {
 	private String cfCode;
 	private String cfName;
 	private int cfOne;
@@ -12,18 +12,18 @@ public class CoffeeList1 {
 	private int marginPrice;
 	
 	
-	public CoffeeList1() {
+	public CoffeeList() {
 		
 	}
 
 
-	public CoffeeList1(String cfCode) {
+	public CoffeeList(String cfCode) {
 		super();
 		this.cfCode = cfCode;
 	}
 
 
-	public CoffeeList1(String cfCode, String cfName, int cfOne, int cfSell, int cfMargin, int salePrice, int addTax,
+	public CoffeeList(String cfCode, String cfName, int cfOne, int cfSell, int cfMargin, int salePrice, int addTax,
 			int supplyPrice, int marginPrice) {
 		super();
 		this.cfCode = cfCode;
