@@ -29,7 +29,7 @@ public class ExportSettingService extends ServiceSetting {
 		checkBackupDir();
 		
 		for (String tableName : CoffeeConfig.TABLE_NAME) {
-			executeExportData(getFilePath(tableName),tableName);
+			executeExportData(getFilePath(tableName,false),tableName); //확인요망
 		}
 		copyFile();
 	}
@@ -66,13 +66,7 @@ public class ExportSettingService extends ServiceSetting {
 		
 	}
 
-	private Object getFilePath(String tableName) {// 확인 요망
-		StringBuilder sb = new StringBuilder();
-		sb.append(CoffeeConfig.MYSQL_EXPORT_PATH).append(tableName).append(".txt");
-		return sb.toString().replace("\\", "/");
-		
-		
-	}
+	
 
 	private void checkBackupDir() {
 		File backupDir = new File(CoffeeConfig.EXPORT_DIR);
