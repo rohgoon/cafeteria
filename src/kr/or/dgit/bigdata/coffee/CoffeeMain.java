@@ -63,6 +63,9 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		mainPanel.setLayout(new CardLayout(0, 0));
 		
 		cp = new CoffeePanel();
+		GridLayout gridLayout = (GridLayout) cp.getLayout();
+		gridLayout.setColumns(4);
+		gridLayout.setRows(0);
 		mainPanel.add(cp, "name_31824294838809");
 		cl1= new CoffeeList1();
 		mainPanel.add(cl1, "name_31824311102070");
