@@ -37,12 +37,14 @@ public class InitSettingService extends ServiceSetting {
 		CafeteriaDao dao =  CafeteriaDao.getInstance();
 		dao.createItem();
 		dao.selectUseDatabase();
+		
+		
 	}
 
 	private void creatSql() {
 		TABLE_SQL.put("pdtcode", "create table pdtcode (cfcode varchar(10),cfname varchar(20), primary key(cfcode))");
-		TABLE_SQL.put("pdfsale", "create table pdfsale (cfcode varchar(10),cfOne int(11), cfSell int(11), cfmargin int(11),"
-				+ "primary key(cfcode), foreign key (cfcode) references pdtcode(cfcode)");
+		TABLE_SQL.put("pdtsale", "create table pdfsale (cfcode varchar(10),cfOne int(11), cfSell int(11), cfmargin int(11), "
+				+ "primary key (cfcode), foreign key (cfcode) references pdtcode (cfcode))");
 		
 	}
 	
