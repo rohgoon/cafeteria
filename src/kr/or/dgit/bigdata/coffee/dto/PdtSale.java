@@ -14,7 +14,7 @@ public class PdtSale {
 		super();
 		this.cfCode = cfCode;
 	}
-
+	
 	public PdtSale(String cfCode, int cfOne, int cfSell, int cfMargin) {
 		super();
 		this.cfCode = cfCode;

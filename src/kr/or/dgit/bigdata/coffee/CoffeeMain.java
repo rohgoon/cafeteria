@@ -1,8 +1,10 @@
 package kr.or.dgit.bigdata.coffee;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import kr.or.dgit.bigdata.coffee.dto.PdtCode;
+import kr.or.dgit.bigdata.coffee.dto.PdtSale;
 import kr.or.dgit.bigdata.coffee.setting.ExportSettingService;
 import kr.or.dgit.bigdata.coffee.setting.ImportSettingService;
 import kr.or.dgit.bigdata.coffee.setting.InitSettingService;
@@ -18,9 +22,6 @@ import kr.or.dgit.bigdata.coffee.setting.ServiceSetting;
 import kr.or.dgit.bigdata.coffee.ui.CoffeePanel;
 import kr.or.dgit.bigdata.coffee.ui.list.CoffeeList1;
 import kr.or.dgit.bigdata.coffee.ui.list.CoffeeList2;
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-import java.awt.CardLayout;
 
 public class CoffeeMain extends JFrame implements ActionListener {
 
@@ -37,7 +38,9 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	private JButton btnInint;
 	private JButton btnImport;
 	private JButton btnExport;
-
+	
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -115,7 +118,24 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		/*contentPane.add(cp, BorderLayout.CENTER);*/
 		
 	}
-
+	
+	public PdtCode getPdtCodeObject(){
+		String cfCode = cp.getTxtCode();
+		String cfName = cp.getTxtName();
+		
+		return new PdtCode(cfCode, cfName);
+	}
+	public PdtSale getPdtSaleObject(){
+		String cfCode = cp.getTxtCode();
+		int cfOne = cp.getTxtCfone();
+		int cfSell = cp.getTxtSell();
+		int cfMargin = cp.getTxtMargin();
+		
+		
+		return new PdtSale(cfCode, cfOne, cfSell, cfMargin);		
+	}
+	
+	
 	
 	// ?≪뀡由ъ뒪??
 	public void actionPerformed(ActionEvent arg0) {

@@ -64,4 +64,24 @@ public class CoffeePanel extends JPanel {
 		
 	}
 
+	public String getTxtCode() {
+		return txtCode.getText().trim();
+	}
+
+	public String getTxtName() {
+		return txtName.getText().trim();
+	}
+
+	public int getTxtCfone() {
+		return Integer.parseInt(txtCfone.getText().trim());
+	}
+
+	public int getTxtSell() {
+		return Integer.parseInt(txtSell.getText().trim());
+	}
+
+	public int getTxtMargin() {
+		return Integer.parseInt(txtMargin.getText().trim());
+	}
+	
 }
