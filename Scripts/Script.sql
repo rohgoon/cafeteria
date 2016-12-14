@@ -1,4 +1,5 @@
 drop table pdtcode;
+drop table pdtsale;
 
 
 create view view_v_output as 

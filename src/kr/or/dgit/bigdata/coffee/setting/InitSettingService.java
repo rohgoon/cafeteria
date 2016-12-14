@@ -43,7 +43,7 @@ public class InitSettingService extends ServiceSetting {
 
 	private void creatSql() {
 		TABLE_SQL.put("pdtcode", "create table pdtcode (cfcode varchar(10),cfname varchar(20), primary key(cfcode))");
-		TABLE_SQL.put("pdtsale", "create table pdfsale (cfcode varchar(10),cfOne int(11), cfSell int(11), cfmargin int(11), "
+		TABLE_SQL.put("pdtsale", "create table pdtsale (cfcode varchar(10),cfOne int(11), cfSell int(11), cfmargin int(11), "
 				+ "primary key (cfcode), foreign key (cfcode) references pdtcode (cfcode))");
 		
 	}
