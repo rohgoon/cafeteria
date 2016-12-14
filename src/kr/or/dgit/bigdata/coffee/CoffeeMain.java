@@ -30,6 +30,9 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	private CoffeeList1 cl1;
 	private CoffeeList2 cl2;
 	private JPanel mainPanel;
+	private JButton btnInint;
+	private JButton btnImport;
+	private JButton btnExport;
 
 	/**
 	 * Launch the application.
@@ -85,13 +88,22 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		btnOk.addActionListener(this);
 		subPanel.add(btnOk);
 		
-		btnList1 = new JButton("추가1");
+		btnList1 = new JButton("출력1");
 		btnList1.addActionListener(this);
 		subPanel.add(btnList1);
 		
-		btnList2 = new JButton("추가2");
+		btnList2 = new JButton("출력2");
 		btnList2.addActionListener(this);
 		subPanel.add(btnList2);
+		
+		btnInint = new JButton("초기화");
+		subPanel.add(btnInint);
+		
+		btnExport = new JButton("백업");
+		subPanel.add(btnExport);
+		
+		btnImport = new JButton("복원");
+		subPanel.add(btnImport);
 		
 		/*contentPane.add(cp, BorderLayout.CENTER);*/
 		
