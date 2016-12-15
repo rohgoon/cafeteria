@@ -71,6 +71,11 @@ public class CoffeePanel extends JPanel {
 	public String getTxtName() {
 		return txtName.getText().trim();
 	}
+	
+	
+	public void setTxtName(JTextField txtName) {
+		this.txtName = txtName;
+	}
 
 	public int getTxtCfone() {
 		return Integer.parseInt(txtCfone.getText().trim());
