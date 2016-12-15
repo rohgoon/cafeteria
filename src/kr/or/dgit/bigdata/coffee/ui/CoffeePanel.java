@@ -82,6 +82,7 @@ public class CoffeePanel extends JPanel {
 	}
 
 	public int getTxtCfone() {
+		
 		return Integer.parseInt(txtCfone.getText().trim());
 	}
 
@@ -96,7 +97,7 @@ public class CoffeePanel extends JPanel {
 	public void setClearTxtCode() {
 		this.txtCode.setText("");
 	}
-
+	
 	public void setClearTxtCfone() {
 		this.txtCfone.setText("");
 		this.txtSell.setText("");

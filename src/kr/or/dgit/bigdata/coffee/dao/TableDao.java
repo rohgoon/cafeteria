@@ -57,6 +57,7 @@ public class TableDao {
 			System.out.println("뷰테이블 생성 실패");
 			e.printStackTrace();
 		} finally {
+			
 			CoffeeJdbcUtil.close(pstmt);
 		}
 
@@ -64,7 +65,7 @@ public class TableDao {
 
 	public List<ViewTable> selectItemByAll1() {
 		List<ViewTable> viewList = new ArrayList<ViewTable>();
-		String sql = "select count(salePrice) as rank, cfCode, cfName, cfOne, cfSell, cfMargin, salePrice, addTax, supplyPrice, marginPrice from cafeteria.view_v_output order by rank";
+		String sql = "select (select count(*)+1 from cafeteria.view_v_output as e2 where e1.salePrice < e2.salePrice) as rank, cfCode, cfName, cfOne, cfSell, cfMargin, salePrice, addTax, supplyPrice, marginPrice from cafeteria.view_v_output e1 order by salePrice desc";
 		// 확인 요망
 
 		PreparedStatement pstmt = null;
@@ -90,7 +91,7 @@ public class TableDao {
 
 	public List<ViewTable> selectItemByAll2() {
 		List<ViewTable> viewList = new ArrayList<ViewTable>();
-		String sql = "select count(marginPrice) as rank, cfCode, cfName, cfOne, cfSell, cfMargin, salePrice, addTax, supplyPrice, marginPrice from cafeteria.view_v_output order by rank";
+		String sql = "select (select count(*)+1 from cafeteria.view_v_output as e2 where e1.salePrice < e2.salePrice) as rank, cfCode, cfName, cfOne, cfSell, cfMargin, salePrice, addTax, supplyPrice, marginPrice from cafeteria.view_v_output e1 order by marginPrice desc";
 		// 확인 요망
 
 		PreparedStatement pstmt = null;

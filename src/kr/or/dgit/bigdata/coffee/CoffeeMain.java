@@ -78,12 +78,6 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		gridLayout.setColumns(4);
 		gridLayout.setRows(0);
 		mainPanel.add(cp, "name_31824294838809");
-		cl1 = new CoffeeList1();
-		mainPanel.add(cl1, "name_31824311102070");
-		cl2 = new CoffeeList2();
-		mainPanel.add(cl2, "name_31824327458798");
-		cl2.setVisible(false);
-		cl1.setVisible(false);
 
 		subPanel = new JPanel();
 		FlowLayout fl_subPanel = (FlowLayout) subPanel.getLayout();
@@ -123,20 +117,19 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		String cfCode = cp.getTxtCode();
 
 		String[][] codeList = { { "A001", "아메리카노" }, { "A002", "카푸치노" }, { "A003", "헤이즐넛" }, { "A004", "에스프레소" },
-				{ "B001", "딸기쉐이크" }, { "B002", "후르츠와인" }, { "B003", "팥빙수카노" }, { "B004", "아메리카노" } };
-		String cfName= null;
-		
+				{ "B001", "딸기쉐이크" }, { "B002", "후르츠와인" }, { "B003", "팥빙수" }, { "B004", "아이스초코" } };
+		String cfName = null;
+
 		for (int i = 0; i < codeList.length; i++) {
-			
+
 			if (codeList[i][0].equals(cfCode)) {
 				cfName = codeList[i][1];
 				cp.setTxtName(codeList[i][1]);
 				checkCode = 1;
 				break;
-			}			
-		};
-		
-//		String cfName = cp.getTxtName();
+			}
+		}
+		;
 
 		return new PdtCode(cfCode, cfName);
 	}
@@ -149,13 +142,14 @@ public class CoffeeMain extends JFrame implements ActionListener {
 
 		return new PdtSale(cfCode, cfOne, cfSell, cfMargin);
 	}
-	
-	public void clearTf(){
+
+	public void clearTf() {
 		cp.setClearTxtCode();
+		cp.setTxtName("");
 		cp.setClearTxtCfone();
 		cp.setClearTxtSell();
 		cp.setClearTxtMargin();
-		
+
 	}
 
 	// ?≪뀡由ъ뒪??
@@ -189,48 +183,81 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtnNewButton(ActionEvent e) {
-		// ?대깽?몄뿉 ?곕씪 if臾?異붽?
-		cl1.setVisible(false);
-		cl2.setVisible(false);
+
 		cp.setVisible(true);
 
-		if (cp.isVisible()) {
-			PdtCode c = getPdtCodeObject();
-			
-			try{
-			PdtSale s = getPdtSaleObject();
-			if (checkCode == 0) {
-				JOptionPane.showMessageDialog(null, "존재하지 않는 제품 코드 입니다.");
-				
-			}else{
-				CafeteriaDao.getInstance().insertTable(c);
-				CafeteriaDao.getInstance().insertTable(s);
-				
-			JOptionPane.showMessageDialog(null, c.getCfName()+"추가 완료");
+		try {
+			if (cl1.isVisible()) {
+				cl1.setVisible(false);
+
+			} else if (cl2.isVisible()) {
+				cl2.setVisible(false);
 			}
-			}catch (NumberFormatException exception) {
-				JOptionPane.showMessageDialog(null, "새로운 제품 정보를 입력해 주세요.");
-			}		
-			
-			clearTf();
-			
+		} catch (Exception e2) {
+
 		}
+
+		try {
+
+			if (cp.isVisible() == true) {
+				PdtCode c = getPdtCodeObject();
+				PdtSale s = getPdtSaleObject();
+
+				if (checkCode == 0) {
+					JOptionPane.showMessageDialog(null, "존재하지 않는 제품 코드 입니다.");
+
+				} else {
+					CafeteriaDao.getInstance().insertTable(c);
+					CafeteriaDao.getInstance().insertTable(s);
+
+					JOptionPane.showMessageDialog(null, c.getCfName() + "추가 완료");
+					clearTf();
+				}
+
+			}
+
+		} catch (NumberFormatException e2) {
+
+			JOptionPane.showMessageDialog(null, "새로운 판매 정보를 등록하세요.");
+
+		}
+
 	}
 
 	protected void actionPerformedBtnList1(ActionEvent e) {
 
-		cp.setVisible(false);
-		cl2.setVisible(false);
+		cl1 = new CoffeeList1();
+		mainPanel.add(cl1, "name_31824311102070");
+
+		try {
+			if (cp.isVisible()) {
+				cp.setVisible(false);
+
+			} else if (cl2.isVisible()) {
+				cl2.setVisible(false);
+			}
+		} catch (Exception e2) {
+
+		}
 		cl1.setVisible(true);
-		revalidate();
+		/* cl1.revalidate(); */
 	}
 
 	protected void actionPerformedBtnList2(ActionEvent e) {
+		cl2 = new CoffeeList2();
+		mainPanel.add(cl2, "name_31824327458798");
+		try {
+			if (cl1.isVisible()) {
+				cl1.setVisible(false);
 
-		cp.setVisible(false);
-		cl1.setVisible(false);
+			} else if (cp.isVisible()) {
+				cp.setVisible(false);
+			}
+		} catch (Exception e2) {
+
+		}
 		cl2.setVisible(true);
-		revalidate();
+		/* cl2.revalidate(); */
 	}
 
 	protected void actionPerformedBtnImport(ActionEvent arg0) {

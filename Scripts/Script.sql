@@ -11,3 +11,5 @@ where c.cfCode = s.cfCode
 order by salePrise;
 
 drop view view_v_output;
+
+select (select count(*)+1 from cafeteria.view_v_output as e2 where e1.salePrice < e2.salePrice) as rnk, cfCode, cfName, cfOne, cfSell, cfMargin, salePrice, addTax, supplyPrice, marginPrice from cafeteria.view_v_output e1 order by salePrice desc;

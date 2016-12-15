@@ -76,7 +76,10 @@ public class CoffeeList1 extends JPanel {
 
 	private String[][] getRowData() {
 		List<ViewTable> list = TableDao.getInstance().selectItemByAll1();
+		System.out.println("[getRowData]size:"+list.size());
+		
 		String[][] rowDatas = new String[list.size()][];
+		
 		for (int i = 0; i < list.size(); i++) {
 			rowDatas[i] = list.get(i).toArray(); // 행 순서 변경시 이걸 변경2
 		}
