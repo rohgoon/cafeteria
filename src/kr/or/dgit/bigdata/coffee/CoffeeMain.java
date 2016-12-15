@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import kr.or.dgit.bigdata.coffee.dao.CafeteriaDao;
 import kr.or.dgit.bigdata.coffee.dto.PdtCode;
 import kr.or.dgit.bigdata.coffee.dto.PdtSale;
 import kr.or.dgit.bigdata.coffee.setting.ExportSettingService;
@@ -176,7 +177,8 @@ public class CoffeeMain extends JFrame implements ActionListener {
 			PdtCode c = getPdtCodeObject();
 			PdtSale s = getPdtSaleObject();
 			// Dao에 insert아이템 추가할것
-			
+			CafeteriaDao.getInstance().insertTable(c);
+			CafeteriaDao.getInstance().insertTable(s);
 			
 		}		
 	}
