@@ -88,7 +88,7 @@ public class CafeteriaDao implements CoffeeInterDao<CafeteriaDao>{
 	}
 	
 	public int insertTable(PdtCode c) {
-		String sql = "insert into pdtcode values(?,?)";
+		String sql = "insert into cafeteria.pdtcode values(?,?)";
 		Connection con = CoffeeDbc.getConnection();
 		int res = -1;
 		PreparedStatement pstmt = null;
@@ -114,7 +114,7 @@ public class CafeteriaDao implements CoffeeInterDao<CafeteriaDao>{
 	}
 	
 	public int insertTable(PdtSale s) {
-		String sql = "insert into pdtsale values(?,?,?,?)";
+		String sql = "insert into cafeteria.pdtsale values(?,?,?,?)";
 		Connection con = CoffeeDbc.getConnection();
 		int res = -1;
 		PreparedStatement pstmt = null;

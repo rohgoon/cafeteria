@@ -136,7 +136,6 @@ public class CoffeeMain extends JFrame implements ActionListener {
 			}			
 		};
 		
-		
 //		String cfName = cp.getTxtName();
 
 		return new PdtCode(cfCode, cfName);
@@ -207,7 +206,10 @@ public class CoffeeMain extends JFrame implements ActionListener {
 			}else{
 				CafeteriaDao.getInstance().insertTable(c);
 				CafeteriaDao.getInstance().insertTable(s);
+				
+			JOptionPane.showMessageDialog(null, c.getCfName()+"추가 완료");
 			}
+			
 		}
 	}
 

@@ -11,19 +11,20 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 public class CoffeeList1 extends JPanel {
+	
 	private JTable table_1;
-
 	/**
 	 * Create the panel.
 	 */
 	public CoffeeList1() {
+		
 		setBorder(new EmptyBorder(10, 0, 10, 0));
 		setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblTitle = new JLabel("판 매 금 액 순 위");
+		JLabel lblTitle = new JLabel("판 매 금 액 순 위");		
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		add(lblTitle, BorderLayout.NORTH);
+		add(lblTitle, BorderLayout.NORTH);	
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane);
