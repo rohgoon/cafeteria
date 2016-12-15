@@ -72,9 +72,10 @@ public class CoffeePanel extends JPanel {
 		return txtName.getText().trim();
 	}
 	
-	
-	public void setTxtName(JTextField txtName) {
-		this.txtName = txtName;
+
+	public void setTxtName(String txtName) {
+				
+		this.txtName.setText(txtName);
 	}
 
 	public int getTxtCfone() {
@@ -88,5 +89,23 @@ public class CoffeePanel extends JPanel {
 	public int getTxtMargin() {
 		return Integer.parseInt(txtMargin.getText().trim());
 	}
+
+	public void setClearTxtCode() {
+		this.txtCode.setText("");
+	}
+
+	public void setClearTxtCfone() {
+		this.txtCfone.setText("");
+	}
+
+	public void setClearTxtSell() {
+		this.txtSell.setText("");
+	}
+
+	public void setClearTxtMargin() {
+		this.txtMargin.setText("");
+	}
+	
+	
 	
 }
