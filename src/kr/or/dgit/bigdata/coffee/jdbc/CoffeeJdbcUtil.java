@@ -30,4 +30,10 @@ public class CoffeeJdbcUtil {
 		}
 		
 	}
+	public static void close(ResultSet rs, Statement stmt){
+		close(rs);
+		close(stmt);
+		
+		
+	}
 }

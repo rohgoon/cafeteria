@@ -1,11 +1,14 @@
 package kr.or.dgit.bigdata.coffee.ui;
 
-import javax.swing.JPanel;
 import java.awt.GridLayout;
+
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import kr.or.dgit.bigdata.coffee.dao.TableDao;
 
 public class CoffeePanel extends JPanel {
 	private JTextField txtCode;
@@ -96,7 +99,10 @@ public class CoffeePanel extends JPanel {
 
 	public void setClearTxtCfone() {
 		this.txtCfone.setText("");
+		this.txtSell.setText("");
+		this.txtMargin.setText("");
 	}
+
 
 	public void setClearTxtSell() {
 		this.txtSell.setText("");

@@ -1,6 +1,7 @@
 package kr.or.dgit.bigdata.coffee.dto;
 
 public class ViewTable {
+	private int rank;
 	private String cfCode;
 	private String cfName;
 	private int cfOne;
@@ -23,9 +24,10 @@ public class ViewTable {
 	}
 
 
-	public ViewTable(String cfCode, String cfName, int cfOne, int cfSell, int cfMargin, int salePrice, int addTax,
+	public ViewTable(int rank ,String cfCode, String cfName, int cfOne, int cfSell, int cfMargin, int salePrice, int addTax,
 			int supplyPrice, int marginPrice) {
 		super();
+		this.rank = rank;
 		this.cfCode = cfCode;
 		this.cfName = cfName;
 		this.cfOne = cfOne;
@@ -139,6 +141,11 @@ public class ViewTable {
 		return String.format(
 				"CoffeeList1 [cfCode=%s, cfName=%s, cfOne=%s, cfSell=%s, cfMargin=%s, salePrice=%s, addTax=%s, supplyPrice=%s, marginPrice=%s]",
 				cfCode, cfName, cfOne, cfSell, cfMargin, salePrice, addTax, supplyPrice, marginPrice);
+	}
+	
+	public String[] toArray(){
+		return new String[]{rank+"", cfCode, cfName, cfOne+"", cfSell+"", cfMargin+"", salePrice+"", addTax+"", supplyPrice+"", marginPrice+""};
+		
 	}
 	
 	

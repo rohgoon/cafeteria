@@ -152,7 +152,6 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	
 	public void clearTf(){
 		cp.setClearTxtCode();
-		cp.setTxtName("");
 		cp.setClearTxtCfone();
 		cp.setClearTxtSell();
 		cp.setClearTxtMargin();
@@ -197,18 +196,23 @@ public class CoffeeMain extends JFrame implements ActionListener {
 
 		if (cp.isVisible()) {
 			PdtCode c = getPdtCodeObject();
-			PdtSale s = getPdtSaleObject();
-			// Dao에 insert아이템 추가할것
 			
+			try{
+			PdtSale s = getPdtSaleObject();
 			if (checkCode == 0) {
 				JOptionPane.showMessageDialog(null, "존재하지 않는 제품 코드 입니다.");
-				clearTf();
+				
 			}else{
 				CafeteriaDao.getInstance().insertTable(c);
 				CafeteriaDao.getInstance().insertTable(s);
 				
 			JOptionPane.showMessageDialog(null, c.getCfName()+"추가 완료");
 			}
+			}catch (NumberFormatException exception) {
+				JOptionPane.showMessageDialog(null, "새로운 제품 정보를 입력해 주세요.");
+			}		
+			
+			clearTf();
 			
 		}
 	}
@@ -218,6 +222,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		cp.setVisible(false);
 		cl2.setVisible(false);
 		cl1.setVisible(true);
+		revalidate();
 	}
 
 	protected void actionPerformedBtnList2(ActionEvent e) {
@@ -225,7 +230,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		cp.setVisible(false);
 		cl1.setVisible(false);
 		cl2.setVisible(true);
-
+		revalidate();
 	}
 
 	protected void actionPerformedBtnImport(ActionEvent arg0) {
