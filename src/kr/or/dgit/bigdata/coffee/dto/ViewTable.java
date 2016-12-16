@@ -145,9 +145,13 @@ public class ViewTable {
 	
 	public String[] toArray(){
 		return new String[]{rank+"", cfCode, cfName, cfOne+"", cfSell+"", cfMargin+"", salePrice+"", addTax+"", supplyPrice+"", marginPrice+""};
-		
+		//행순서 변경시 이걸 변경3
 	}
 	
+	public String[] forSumArray(){
+		
+		return new String[]{salePrice+"", addTax+"", supplyPrice+"", marginPrice+""};
+	}
 	
 	
 	

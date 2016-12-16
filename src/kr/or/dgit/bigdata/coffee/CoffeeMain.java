@@ -240,7 +240,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 
 		}
 		cl1.setVisible(true);
-		/* cl1.revalidate(); */
+		cl1.revalidate();
 	}
 
 	protected void actionPerformedBtnList2(ActionEvent e) {
@@ -257,7 +257,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 
 		}
 		cl2.setVisible(true);
-		/* cl2.revalidate(); */
+		cl2.revalidate(); 
 	}
 
 	protected void actionPerformedBtnImport(ActionEvent arg0) {
