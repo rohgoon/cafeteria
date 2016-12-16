@@ -31,7 +31,7 @@ public class ExportSettingService extends ServiceSetting {
 		for (File file : srcDir.listFiles()) {
 			destDir = new File(CoffeeConfig.IMPORT_DIR + file.getName());
 			file.renameTo(destDir);
-			file.delete();
+			file.delete(); // MYSQL_EXPORT_PATH의 파일을 지움
 		}
 
 	}
