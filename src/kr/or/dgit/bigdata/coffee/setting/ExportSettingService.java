@@ -40,14 +40,16 @@ public class ExportSettingService extends ServiceSetting {
 		String sql = String.format("select * into outfile '%s' " + "character set 'UTF8' " + "fields terminated by ',' "
 				+ "lines terminated by '\n' from %s", filePath, tableName);
 		Statement stmt = null;
-
+		System.out.println(" 확인 : "+sql);
 		Connection con = CoffeeDbc.getConnection();
 		try {
 			stmt = con.createStatement();
 			stmt.executeQuery(sql);
+			
 			System.out.printf("Export Table(%s) %d Rows Success! %n",tableName, stmt.getUpdateCount());
 		} catch (SQLException e) {
 			System.out.printf("error %d : %s %n", e.getErrorCode(), e.getMessage());
+			//e.printStackTrace();
 		} finally {
 			CoffeeJdbcUtil.close(stmt);
 		}

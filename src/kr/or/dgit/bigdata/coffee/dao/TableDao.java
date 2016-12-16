@@ -91,7 +91,7 @@ public class TableDao {
 
 	public List<ViewTable> selectItemByAll2() {
 		List<ViewTable> viewList = new ArrayList<ViewTable>();
-		String sql = "select (select count(*)+1 from cafeteria.view_v_output as e2 where e1.salePrice < e2.salePrice) as rank, cfCode, cfName, cfOne, cfSell, cfMargin, salePrice, addTax, supplyPrice, marginPrice from cafeteria.view_v_output e1 order by marginPrice desc";
+		String sql = "select (select count(*)+1 from cafeteria.view_v_output as e2 where e1.marginPrice < e2.marginPrice) as rank, cfCode, cfName, cfOne, cfSell, cfMargin, salePrice, addTax, supplyPrice, marginPrice from cafeteria.view_v_output e1 order by marginPrice desc";
 		// 확인 요망
 
 		PreparedStatement pstmt = null;

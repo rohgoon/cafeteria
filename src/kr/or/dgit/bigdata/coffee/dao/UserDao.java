@@ -22,7 +22,28 @@ public class UserDao implements CoffeeInterDao<UserDao> {
 
 	public void initUser() {
 		createItem();
+		grantUser();
+	}
 
+	private void grantUser() {
+		String sql = "grant select, insert, update, delete on " + CoffeeConfig.DB_NAME + ".* to ?";
+		PreparedStatement pstmt = null;
+		
+			Connection con = CoffeeDbc.getConnection();
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, CoffeeConfig.PJT_USER);
+				pstmt.executeUpdate();
+				System.out.printf("%s가 권한 획득 %n",CoffeeConfig.PJT_USER);
+			} catch (SQLException e) {
+				System.out.printf("%s가 권한 획득 실패 %n",CoffeeConfig.PJT_USER);
+				e.printStackTrace();
+			} finally {
+				CoffeeJdbcUtil.close(pstmt);
+			}
+			
+			
+		
 	}
 
 	@Override
@@ -33,8 +54,8 @@ public class UserDao implements CoffeeInterDao<UserDao> {
 
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, CoffeeConfig.PJT_USER);
-			pstmt.setString(2, CoffeeConfig.PJT_PASSED);
+			pstmt.setString(1, CoffeeConfig.USER);
+			pstmt.setString(2, CoffeeConfig.PWD);
 			pstmt.execute();
 		} catch (SQLException e) {
 
