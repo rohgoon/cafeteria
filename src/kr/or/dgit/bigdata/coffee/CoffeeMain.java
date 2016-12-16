@@ -42,9 +42,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	private JButton btnExport;
 	private int checkCode = 0;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -58,9 +56,6 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public CoffeeMain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 380);
@@ -109,7 +104,6 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		btnImport.addActionListener(this);
 		subPanel.add(btnImport);
 
-		/* contentPane.add(cp, BorderLayout.CENTER); */
 
 	}
 
@@ -124,12 +118,10 @@ public class CoffeeMain extends JFrame implements ActionListener {
 
 			if (codeList[i][0].equals(cfCode)) {
 				cfName = codeList[i][1];
-				cp.setTxtName(codeList[i][1]);
 				checkCode = 1;
 				break;
 			}
-		}
-		;
+		};
 
 		return new PdtCode(cfCode, cfName);
 	}
@@ -152,7 +144,6 @@ public class CoffeeMain extends JFrame implements ActionListener {
 
 	}
 
-	// ?≪뀡由ъ뒪??
 	public void actionPerformed(ActionEvent arg0) {
 		ServiceSetting create = null;
 		if (arg0.getSource() == btnExport) {
@@ -183,37 +174,25 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtnNewButton(ActionEvent e) {
+		
+		CardLayout cl = (CardLayout) (mainPanel.getLayout());
 
-		cp.setVisible(true);
-
-		try {
-			if (cl1.isVisible()) {
-				cl1.setVisible(false);
-
-			} else if (cl2.isVisible()) {
-				cl2.setVisible(false);
-			}
-		} catch (Exception e2) {
-
-		}
+		cl.show(mainPanel, "name_31824294838809");
 
 		try {
 
-			if (cp.isVisible() == true) {
-				PdtCode c = getPdtCodeObject();
-				PdtSale s = getPdtSaleObject();
+			PdtCode c = getPdtCodeObject();
+			PdtSale s = getPdtSaleObject();
 
-				if (checkCode == 0) {
-					JOptionPane.showMessageDialog(null, "존재하지 않는 제품 코드 입니다.");
+			if (checkCode == 0) {
+				JOptionPane.showMessageDialog(null, "존재하지 않는 제품 코드 입니다.");
 
-				} else {
-					CafeteriaDao.getInstance().insertTable(c);
-					CafeteriaDao.getInstance().insertTable(s);
+			} else {
+				CafeteriaDao.getInstance().insertTable(c);
+				CafeteriaDao.getInstance().insertTable(s);
 
-					JOptionPane.showMessageDialog(null, c.getCfName() + "추가 완료");
-					clearTf();
-				}
-
+				JOptionPane.showMessageDialog(null, c.getCfName() + "추가 완료");
+				clearTf();
 			}
 
 		} catch (NumberFormatException e2) {
@@ -229,35 +208,23 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		cl1 = new CoffeeList1();
 		mainPanel.add(cl1, "name_31824311102070");
 
-		try {
-			if (cp.isVisible()) {
-				cp.setVisible(false);
+		CardLayout cl = (CardLayout) (mainPanel.getLayout());
 
-			} else if (cl2.isVisible()) {
-				cl2.setVisible(false);
-			}
-		} catch (Exception e2) {
+		cl.show(mainPanel, "name_31824311102070");
 
-		}
-		cl1.setVisible(true);
 		cl1.revalidate();
+
 	}
 
 	protected void actionPerformedBtnList2(ActionEvent e) {
 		cl2 = new CoffeeList2();
 		mainPanel.add(cl2, "name_31824327458798");
-		try {
-			if (cl1.isVisible()) {
-				cl1.setVisible(false);
 
-			} else if (cp.isVisible()) {
-				cp.setVisible(false);
-			}
-		} catch (Exception e2) {
+		CardLayout cl = (CardLayout) (mainPanel.getLayout());
 
-		}
-		cl2.setVisible(true);
-		cl2.revalidate(); 
+		cl.show(mainPanel, "name_31824327458798");
+		
+		cl2.revalidate();
 	}
 
 	protected void actionPerformedBtnImport(ActionEvent arg0) {
@@ -268,4 +235,5 @@ public class CoffeeMain extends JFrame implements ActionListener {
 
 	protected void actionPerformedBtnExport(ActionEvent arg0) {
 	}
+
 }

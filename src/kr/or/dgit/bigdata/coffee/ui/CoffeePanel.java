@@ -9,14 +9,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import kr.or.dgit.bigdata.coffee.dao.TableDao;
+import java.awt.event.FocusListener;
+import java.awt.event.FocusEvent;
 
-public class CoffeePanel extends JPanel {
+public class CoffeePanel extends JPanel implements FocusListener {
 	private JTextField txtCode;
 	private JTextField txtName;
 	private JTextField txtCfone;
 	private JTextField txtSell;
 	private JTextField txtMargin;
-
+	
 	/**
 	 * Create the panel.
 	 */
@@ -29,6 +31,7 @@ public class CoffeePanel extends JPanel {
 		add(lblCode);
 		
 		txtCode = new JTextField();
+		txtCode.addFocusListener(this);
 		add(txtCode);
 		txtCode.setColumns(10);
 		
@@ -115,4 +118,29 @@ public class CoffeePanel extends JPanel {
 	
 	
 	
+	public void focusGained(FocusEvent arg0) {
+	}
+	public void focusLost(FocusEvent e) {
+		if (e.getSource() == txtCode) {
+			focusLostTxtCode(e);
+		}
+	}
+	protected void focusLostTxtCode(FocusEvent e) {
+		String cfCode = getTxtCode();
+
+		String[][] codeList = { { "A001", "아메리카노" }, { "A002", "카푸치노" }, { "A003", "헤이즐넛" }, { "A004", "에스프레소" },
+				{ "B001", "딸기쉐이크" }, { "B002", "후르츠와인" }, { "B003", "팥빙수" }, { "B004", "아이스초코" } };
+		String cfName = null;
+
+		for (int i = 0; i < codeList.length; i++) {
+
+			if (codeList[i][0].equals(cfCode)) {
+				cfName = codeList[i][1];
+				setTxtName(codeList[i][1]);
+				
+				break;
+			}
+		};
+		
+	}
 }
