@@ -72,7 +72,19 @@ public class UserDao implements CoffeeInterDao<UserDao> {
 	
 	@Override
 	public void dropItem() {
-		
+		String sql = "drop user ?";
+		PreparedStatement pstmt = null;
+		try {
+			Connection con = CoffeeDbc.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, CoffeeConfig.PJT_USER);
+			pstmt.executeUpdate();
+			System.out.printf("Drop User(%s) Success! %n", CoffeeConfig.PJT_USER);
+		} catch (SQLException e) {
+			System.err.printf("Drop User(%s) Fail! %n", CoffeeConfig.PJT_USER);
+		} finally {
+			CoffeeJdbcUtil.close(pstmt);
+		}
 
 	}
 

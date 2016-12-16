@@ -11,7 +11,7 @@ public class CoffeeConfig {
 	public static final String[] TABLE_NAME = { "pdtcode", "pdtsale" };
 	public static final String EXPORT_DIR = System.getProperty("user.dir") + "\\BackupFiles\\";
 	public static final String IMPORT_DIR = System.getProperty("user.dir") + "\\DataFiles\\";
-	public static final String MYSQL_EXPORT_PATH = "C:\\ProgramData\\MySQL\\MySQL Server 5.7\\Uploads\\";
+	public static final String MYSQL_EXPORT_PATH = "C:\\ProgramData\\MySQL\\MySQL Server 5.6\\Uploads\\";
 	//C:\ProgramData\MySQL\MySQL Server 5.6\Uploads
 
 }

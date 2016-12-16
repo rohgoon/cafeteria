@@ -15,6 +15,7 @@ public class ImportSettingService extends ServiceSetting {
 	public void initSetting() {
 		CafeteriaDao dao = CafeteriaDao.getInstance();
 		dao.selectUseDatabase();
+		
 		dao.setForeignKeyCheck(0);
 		for (String t : CoffeeConfig.TABLE_NAME) {
 			executeImportDate(getFilePath(t, true), t);
@@ -26,6 +27,7 @@ public class ImportSettingService extends ServiceSetting {
 	private void executeImportDate(String tablePath, String tableName) {
 		String sql = String.format("LOAD DATA LOCAL INFILE '%s' INTO TABLE %s character set 'UTF8' fields TERMINATED by ','",
 				tablePath, tableName);
+		System.out.println("복원용 sql : " + sql+"%n");
 		Statement stmt = null;
 		try {
 			Connection con = CoffeeDbc.getConnection();
@@ -33,7 +35,7 @@ public class ImportSettingService extends ServiceSetting {
 			stmt.execute(sql);
 			System.out.printf("Import Table(%s) %d Rows Success! %n",tableName, stmt.getUpdateCount());
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.printf("error %d : %s %n", e.getErrorCode(), e.getMessage());
 			if (e.getErrorCode() == 1062) {
 				System.err.println("중복데이터 존재");
 			}

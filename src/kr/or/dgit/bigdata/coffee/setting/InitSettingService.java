@@ -17,12 +17,10 @@ public class InitSettingService extends ServiceSetting {
 		creatDatabase();
 		createTable();
 		creatUser();
-
 	}
 
 	private void creatUser() {
 		UserDao.getInstance().initUser();
-
 	}
 
 	private void createTable() {

@@ -29,7 +29,7 @@ public class ExportSettingService extends ServiceSetting {
 		File srcDir = new File(CoffeeConfig.MYSQL_EXPORT_PATH);
 		File destDir = null;
 		for (File file : srcDir.listFiles()) {
-			destDir = new File(CoffeeConfig.EXPORT_DIR + file.getName());
+			destDir = new File(CoffeeConfig.IMPORT_DIR + file.getName());
 			file.renameTo(destDir);
 			file.delete();
 		}
@@ -37,8 +37,10 @@ public class ExportSettingService extends ServiceSetting {
 	}
 
 	private void executeExportData(Object filePath, String tableName) {
-		String sql = String.format("select * into outfile '%s' " + "character set 'UTF8' " + "fields terminated by ',' "
-				+ "lines terminated by '\n' from %s", filePath, tableName);
+		String sql = String.format("select * into outfile '%s' " 
+					+ "character set 'UTF8' " 
+					+ "fields terminated by ',' "
+					+ "lines terminated by '\n' from %s", filePath, tableName);
 		Statement stmt = null;
 		System.out.println(" 확인 : "+sql);
 		Connection con = CoffeeDbc.getConnection();
