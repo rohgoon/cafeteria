@@ -3,9 +3,9 @@ package kr.or.dgit.bigdata.coffee.dto;
 public class PdtCode {
 	private String cfCode;
 	private String cfName;
-	
+
 	public PdtCode() {
-	
+
 	}
 
 	public PdtCode(String cfCode) {
@@ -39,6 +39,5 @@ public class PdtCode {
 	public String toString() {
 		return String.format("%s", cfName);
 	}
-	
-	
+
 }

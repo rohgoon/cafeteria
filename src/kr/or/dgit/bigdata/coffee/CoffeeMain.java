@@ -42,7 +42,6 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	private JButton btnExport;
 	private int checkCode = 0;
 
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -104,7 +103,6 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		btnImport.addActionListener(this);
 		subPanel.add(btnImport);
 
-
 	}
 
 	public PdtCode getPdtCodeObject() {
@@ -121,7 +119,8 @@ public class CoffeeMain extends JFrame implements ActionListener {
 				checkCode = 1;
 				break;
 			}
-		};
+		}
+		;
 
 		return new PdtCode(cfCode, cfName);
 	}
@@ -174,7 +173,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtnNewButton(ActionEvent e) {
-		
+
 		CardLayout cl = (CardLayout) (mainPanel.getLayout());
 
 		cl.show(mainPanel, "name_31824294838809");
@@ -223,7 +222,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		CardLayout cl = (CardLayout) (mainPanel.getLayout());
 
 		cl.show(mainPanel, "name_31824327458798");
-		
+
 		cl2.revalidate();
 	}
 

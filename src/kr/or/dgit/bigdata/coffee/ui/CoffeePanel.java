@@ -18,56 +18,53 @@ public class CoffeePanel extends JPanel implements FocusListener {
 	private JTextField txtCfone;
 	private JTextField txtSell;
 	private JTextField txtMargin;
-	
-	/**
-	 * Create the panel.
-	 */
+
 	public CoffeePanel() {
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 		setLayout(new GridLayout(5, 2, 10, 10));
-		
+
 		JLabel lblCode = new JLabel("제품코드");
 		lblCode.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblCode);
-		
+
 		txtCode = new JTextField();
 		txtCode.addFocusListener(this);
 		add(txtCode);
 		txtCode.setColumns(10);
-		
+
 		JLabel lblName = new JLabel("제품명");
 		lblName.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblName);
-		
+
 		txtName = new JTextField();
 		txtName.setEditable(false);
 		add(txtName);
 		txtName.setColumns(10);
-		
+
 		JLabel lblCfone = new JLabel("제품단가");
 		lblCfone.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblCfone);
-		
+
 		txtCfone = new JTextField();
 		add(txtCfone);
 		txtCfone.setColumns(10);
-		
+
 		JLabel lblSell = new JLabel("판매수량");
 		lblSell.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblSell);
-		
+
 		txtSell = new JTextField();
 		add(txtSell);
 		txtSell.setColumns(10);
-		
+
 		JLabel lblMargin = new JLabel("마진율");
 		lblMargin.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblMargin);
-		
+
 		txtMargin = new JTextField();
 		add(txtMargin);
 		txtMargin.setColumns(10);
-		
+
 	}
 
 	public String getTxtCode() {
@@ -77,15 +74,14 @@ public class CoffeePanel extends JPanel implements FocusListener {
 	public String getTxtName() {
 		return txtName.getText().trim();
 	}
-	
 
 	public void setTxtName(String txtName) {
-				
+
 		this.txtName.setText(txtName);
 	}
 
 	public int getTxtCfone() {
-		
+
 		return Integer.parseInt(txtCfone.getText().trim());
 	}
 
@@ -100,13 +96,12 @@ public class CoffeePanel extends JPanel implements FocusListener {
 	public void setClearTxtCode() {
 		this.txtCode.setText("");
 	}
-	
+
 	public void setClearTxtCfone() {
 		this.txtCfone.setText("");
 		this.txtSell.setText("");
 		this.txtMargin.setText("");
 	}
-
 
 	public void setClearTxtSell() {
 		this.txtSell.setText("");
@@ -115,16 +110,16 @@ public class CoffeePanel extends JPanel implements FocusListener {
 	public void setClearTxtMargin() {
 		this.txtMargin.setText("");
 	}
-	
-	
-	
+
 	public void focusGained(FocusEvent arg0) {
 	}
+
 	public void focusLost(FocusEvent e) {
 		if (e.getSource() == txtCode) {
 			focusLostTxtCode(e);
 		}
 	}
+
 	protected void focusLostTxtCode(FocusEvent e) {
 		String cfCode = getTxtCode();
 
@@ -137,10 +132,11 @@ public class CoffeePanel extends JPanel implements FocusListener {
 			if (codeList[i][0].equals(cfCode)) {
 				cfName = codeList[i][1];
 				setTxtName(codeList[i][1]);
-				
+
 				break;
 			}
-		};
-		
+		}
+		;
+
 	}
 }

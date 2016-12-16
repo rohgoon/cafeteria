@@ -5,16 +5,16 @@ public class PdtSale {
 	private int cfOne;
 	private int cfSell;
 	private int cfMargin;
-	
+
 	public PdtSale() {
-	
+
 	}
 
 	public PdtSale(String cfCode) {
 		super();
 		this.cfCode = cfCode;
 	}
-	
+
 	public PdtSale(String cfCode, int cfOne, int cfSell, int cfMargin) {
 		super();
 		this.cfCode = cfCode;
@@ -59,6 +59,5 @@ public class PdtSale {
 	public String toString() {
 		return String.format("PdtSale [cfCode=%s, cfOne=%s, cfSell=%s, cfMargin=%s]", cfCode, cfOne, cfSell, cfMargin);
 	}
-	
-	
+
 }

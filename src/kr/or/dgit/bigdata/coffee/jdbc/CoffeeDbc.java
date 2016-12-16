@@ -15,10 +15,8 @@ public class CoffeeDbc {
 			Class.forName(CoffeeConfig.DRIVER);
 			con = DriverManager.getConnection(CoffeeConfig.URL, CoffeeConfig.USER,CoffeeConfig.PWD);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -37,7 +35,6 @@ public class CoffeeDbc {
 				con.close();
 				con = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
