@@ -13,7 +13,7 @@ public class UserDao implements CoffeeInterDao<UserDao> {
 	private static UserDao instance = new UserDao();
 
 	public UserDao() {
-
+		
 	}
 
 	public static UserDao getInstance() {
@@ -48,18 +48,21 @@ public class UserDao implements CoffeeInterDao<UserDao> {
 
 	@Override
 	public void createItem() {
-		String sql = "grant select, insert,update,delete on " + CoffeeConfig.DB_NAME + ".* to ? identified by ?";
+		String sql = "create user ? identified by ?";
 		PreparedStatement pstmt = null;
-		Connection con = CoffeeDbc.getConnection();
-
 		try {
+			Connection con = CoffeeDbc.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, CoffeeConfig.USER);
-			pstmt.setString(2, CoffeeConfig.PWD);
+			pstmt.setString(1, CoffeeConfig.PJT_USER);
+			pstmt.setString(2, CoffeeConfig.PJT_PASSWD);
 			pstmt.execute();
+			System.out.printf("Create User(%s) Success! %n", CoffeeConfig.PJT_USER);
 		} catch (SQLException e) {
-
-			e.printStackTrace();
+			if (e.getErrorCode()==1396){
+				System.err.printf("User(%s) exists!%n", CoffeeConfig.PJT_USER);
+				dropItem();
+				createItem();
+			}
 		} finally {
 			CoffeeJdbcUtil.close(pstmt);
 		}
