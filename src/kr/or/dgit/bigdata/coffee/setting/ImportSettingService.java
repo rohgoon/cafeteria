@@ -17,21 +17,23 @@ public class ImportSettingService extends ServiceSetting {
 		dao.selectUseDatabase();
 		dao.setForeignKeyCheck(0);
 		for (String t : CoffeeConfig.TABLE_NAME) {
-			executeImporData(getFilePath(t, true), t);
+			executeImportDate(getFilePath(t, true), t);
 		}
 		dao.setForeignKeyCheck(1);
 
 	}
 
-	private void executeImporData(Object filePath, String t) {
-		String sql = String.format("load data infile '%s' into table %s character set 'utf8 fields terminated by ','",
-				filePath, t);
+	private void executeImportDate(String tablePath, String tableName) {
+		String sql = String.format("LOAD DATA LOCAL INFILE '%s' INTO TABLE %s character set 'UTF8' fields TERMINATED by ','",
+				tablePath, tableName);
 		Statement stmt = null;
-		Connection con = CoffeeDbc.getConnection();
 		try {
+			Connection con = CoffeeDbc.getConnection();
 			stmt = con.createStatement();
 			stmt.execute(sql);
+			System.out.printf("Import Table(%s) %d Rows Success! %n",tableName, stmt.getUpdateCount());
 		} catch (SQLException e) {
+			e.printStackTrace();
 			if (e.getErrorCode() == 1062) {
 				System.err.println("중복데이터 존재");
 			}
