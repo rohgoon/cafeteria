@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import kr.or.dgit.bigdata.coffee.CoffeeConfig;
 import kr.or.dgit.bigdata.coffee.dto.PdtCode;
 import kr.or.dgit.bigdata.coffee.dto.PdtSale;
@@ -102,9 +104,10 @@ public class CafeteriaDao implements CoffeeInterDao<CafeteriaDao>{
 		} catch (SQLException e) {
 			System.out.println(e.getErrorCode());
 			if (e.getErrorCode() == 1062) {
-				System.out.println("중복입니다.");
+				JOptionPane.showMessageDialog(null, "중복된 제품 코드 입니다.");
+				return 0000;
 			}
-			e.printStackTrace();
+		
 
 		} finally {
 			CoffeeJdbcUtil.close(pstmt);
@@ -128,11 +131,11 @@ public class CafeteriaDao implements CoffeeInterDao<CafeteriaDao>{
 
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println(e.getErrorCode());
+			
 			if (e.getErrorCode() == 1062) {
-				System.out.println("중복입니다.");
+				System.out.println(e.getErrorCode());
 			}
-			e.printStackTrace();
+			
 
 		} finally {
 			CoffeeJdbcUtil.close(pstmt);

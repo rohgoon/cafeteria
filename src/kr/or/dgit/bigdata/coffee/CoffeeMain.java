@@ -7,12 +7,15 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import kr.or.dgit.bigdata.coffee.dao.CafeteriaDao;
 import kr.or.dgit.bigdata.coffee.dto.PdtCode;
@@ -118,7 +121,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 				cfName = codeList[i][1];
 				checkCode = 1;
 				break;
-			}else{
+			} else {
 				checkCode = 0;
 			}
 		}
@@ -147,7 +150,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent arg0) {
 		ServiceSetting create = null;
-		
+
 		if (arg0.getSource() == btnExport) {
 			create = new ExportSettingService();
 
@@ -170,13 +173,14 @@ public class CoffeeMain extends JFrame implements ActionListener {
 			actionPerformedBtnList2(arg0);
 		}
 		if (arg0.getSource() == btnOk) {
+			
 			actionPerformedBtnNewButton(arg0);
 		}
 
 	}
 
 	protected void actionPerformedBtnNewButton(ActionEvent e) {
-		
+
 		CardLayout cl = (CardLayout) (mainPanel.getLayout());
 
 		cl.show(mainPanel, "name_31824294838809");
@@ -192,16 +196,16 @@ public class CoffeeMain extends JFrame implements ActionListener {
 			} else {
 				CafeteriaDao.getInstance().insertTable(c);
 				CafeteriaDao.getInstance().insertTable(s);
-
-				JOptionPane.showMessageDialog(null, c.getCfName() + "추가 완료");
-				clearTf();
+				if(CafeteriaDao.getInstance().insertTable(c) != 0000){
+					JOptionPane.showMessageDialog(null, c.getCfName() + "추가 완료");
+				}
 			}
 
 		} catch (NumberFormatException e2) {
-
+			
 			JOptionPane.showMessageDialog(null, "새로운 판매 정보를 등록하세요.");
 			
-		}finally {
+		} finally {
 			clearTf();
 		}
 
