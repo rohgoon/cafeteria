@@ -205,7 +205,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 
 	protected void actionPerformedBtnList1(ActionEvent e) {
 
-		cl1 = new CoffeeList1();
+		cl1 = new CoffeeList1("판 매 금 액 순 위");
 		mainPanel.add(cl1, "name_31824311102070");
 
 		CardLayout cl = (CardLayout) (mainPanel.getLayout());
@@ -217,7 +217,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtnList2(ActionEvent e) {
-		cl2 = new CoffeeList2();
+		cl2 = new CoffeeList2("마 진 액 순 위");
 		mainPanel.add(cl2, "name_31824327458798");
 
 		CardLayout cl = (CardLayout) (mainPanel.getLayout());

@@ -1,8 +1,16 @@
 package kr.or.dgit.bigdata.coffee.ui.list;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.util.List;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -10,36 +18,20 @@ import javax.swing.table.TableColumnModel;
 import kr.or.dgit.bigdata.coffee.dao.TableDao;
 import kr.or.dgit.bigdata.coffee.dto.ViewTable;
 
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.util.List;
-import java.util.Vector;
-
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-
-public class CoffeeList2 extends CoffeeList {
-
-	public CoffeeList2(String str) {
-		super(str);
-		
-	}
-	
-	
-	
-	/*private JTable table_2;
+public abstract class CoffeeList extends JPanel {
+	private JTable table_1;
 	private JLabel lblTotalSale;
 	private JLabel lblTotalTax;
 	private JLabel lblTotalSupply;
 	private JLabel lblTotalMp;
+	
+	
 
-	public CoffeeList2() {
+	public CoffeeList(String str) {
+
 		setBorder(new EmptyBorder(10, 0, 10, 0));
 		setLayout(new BorderLayout(0, 0));
-
-		JLabel lblTitle = new JLabel("마 진 액 순 위");
+		JLabel lblTitle = new JLabel(str);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		add(lblTitle, BorderLayout.NORTH);
@@ -47,9 +39,9 @@ public class CoffeeList2 extends CoffeeList {
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane);
 
-		table_2 = new JTable();
+		table_1 = new JTable();
 
-		scrollPane.setViewportView(table_2);
+		scrollPane.setViewportView(table_1);
 
 		JPanel pTotal = new JPanel();
 		pTotal.setBorder(new EmptyBorder(20, 20, 20, 20));
@@ -93,11 +85,11 @@ public class CoffeeList2 extends CoffeeList {
 		reloadData();
 
 	}
+	//
 
 	public void reloadData() {///
 		DefaultTableModel model = new DefaultTableModel(getRowData(), getColumnData());
-		table_2.setModel(model);
-
+		table_1.setModel(model);
 		tableSetAlignWith();
 
 		//
@@ -133,7 +125,9 @@ public class CoffeeList2 extends CoffeeList {
 	} // 행 순서 변경시 이것 변경1
 
 	private String[][] getRowData() {
-		List<ViewTable> list = TableDao.getInstance().selectItemByAll2();
+		List<ViewTable> list = TableDao.getInstance().selectItemByAll1();
+		System.out.println("[getRowData]size:" + list.size());
+
 		String[][] rowDatas = new String[list.size()][];
 		for (int i = 0; i < list.size(); i++) {
 			rowDatas[i] = list.get(i).toArray(); // 행 순서 변경시 이걸 변경2
@@ -143,11 +137,10 @@ public class CoffeeList2 extends CoffeeList {
 	}
 
 	protected void tableSetWidth(int... width) {//
-		TableColumnModel model = table_2.getColumnModel();
+		TableColumnModel model = table_1.getColumnModel();
 		for (int i = 0; i < width.length; i++) {
 			model.getColumn(i).setPreferredWidth(width[i]);
 		}
-
 	}
 
 	protected void tableSetAlignWith() {//
@@ -160,12 +153,11 @@ public class CoffeeList2 extends CoffeeList {
 	protected void tableCellAlignment(int align, int... idx) {//
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalAlignment(align);
-
-		TableColumnModel model = table_2.getColumnModel();
+		TableColumnModel model = table_1.getColumnModel();
 		for (int i = 0; i < idx.length; i++) {
 			model.getColumn(idx[i]).setCellRenderer(dtcr);
 		}
-
-	}*/
+	}
 
 }
+

@@ -18,9 +18,18 @@ import kr.or.dgit.bigdata.coffee.dao.TableDao;
 import kr.or.dgit.bigdata.coffee.dto.ViewTable;
 import java.awt.GridLayout;
 
-public class CoffeeList1 extends JPanel {
+public class CoffeeList1 extends CoffeeList {
 
-	private JTable table_1;
+	public CoffeeList1(String str) {
+
+		super(str);
+		
+	}
+	
+
+	
+
+	/*private JTable table_1;
 	private JLabel lblTotalSale;
 	private JLabel lblTotalTax;
 	private JLabel lblTotalSupply;
@@ -156,6 +165,6 @@ public class CoffeeList1 extends JPanel {
 		for (int i = 0; i < idx.length; i++) {
 			model.getColumn(idx[i]).setCellRenderer(dtcr);
 		}
-	}
+	}*/
 
 }
