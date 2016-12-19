@@ -93,6 +93,7 @@ public class CafeteriaDao implements CoffeeInterDao<CafeteriaDao>{
 		String sql = "insert into cafeteria.pdtcode values(?,?)";
 		Connection con = CoffeeDbc.getConnection();
 		int res = -1;
+		
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement(sql);
