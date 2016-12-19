@@ -118,6 +118,8 @@ public class CoffeeMain extends JFrame implements ActionListener {
 				cfName = codeList[i][1];
 				checkCode = 1;
 				break;
+			}else{
+				checkCode = 0;
 			}
 		}
 		;
