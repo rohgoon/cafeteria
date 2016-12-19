@@ -124,17 +124,7 @@ public abstract class CoffeeList extends JPanel {
 		return new String[] { "순위", "코드", "제품명", "단가", "판매수량", "마진율", "판매금액", "부가세액", "공급가액", "마진액" };
 	} // 행 순서 변경시 이것 변경1
 
-	private String[][] getRowData() {
-		List<ViewTable> list = TableDao.getInstance().selectItemByAll1();
-		System.out.println("[getRowData]size:" + list.size());
-
-		String[][] rowDatas = new String[list.size()][];
-		for (int i = 0; i < list.size(); i++) {
-			rowDatas[i] = list.get(i).toArray(); // 행 순서 변경시 이걸 변경2
-		}
-
-		return rowDatas;
-	}
+	abstract String[][] getRowData();
 
 	protected void tableSetWidth(int... width) {//
 		TableColumnModel model = table_1.getColumnModel();
