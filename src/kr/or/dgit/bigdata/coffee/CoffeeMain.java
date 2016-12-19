@@ -174,7 +174,7 @@ public class CoffeeMain extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtnNewButton(ActionEvent e) {
-
+		
 		CardLayout cl = (CardLayout) (mainPanel.getLayout());
 
 		cl.show(mainPanel, "name_31824294838809");
@@ -198,7 +198,9 @@ public class CoffeeMain extends JFrame implements ActionListener {
 		} catch (NumberFormatException e2) {
 
 			JOptionPane.showMessageDialog(null, "새로운 판매 정보를 등록하세요.");
-
+			
+		}finally {
+			clearTf();
 		}
 
 	}
